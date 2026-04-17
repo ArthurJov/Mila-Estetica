@@ -37,55 +37,78 @@ handleHeaderScroll();
 /* ─── MENU HAMBURGUER ────────────────────────────────── */
 const hamburgerBtn = document.getElementById('hamburger-btn');
 const navMenu      = document.getElementById('nav-menu');
-const navLinks     = document.querySelectorAll('.nav__link');
 
 /*
- * Scroll Lock robusto:
- * - Salva scrollY antes de travar para não perder posição
- * - Usa overflow: hidden no <html> (não no body — body.style.overflow
- *   num browser mobile cria novo containing block e quebra position:fixed)
+ * Scroll Lock:
+ * - Trava via classe no <html> (nunca no body — body.overflow quebra position:fixed em mobile)
+ * - NÃO chamamos window.scrollTo ao destravar: o browser preserva scrollY automaticamente
+ *   quando overflow:hidden está no html. Chamar scrollTo aqui causava conflito com o
+ *   scroll suave dos links de navegação.
  */
-let scrollLockY = 0;
-
 function lockScroll() {
-  scrollLockY = window.scrollY;
   document.documentElement.classList.add('menu-open');
 }
 
 function unlockScroll() {
   document.documentElement.classList.remove('menu-open');
-  // Restaura posição sem animação visual
-  window.scrollTo({ top: scrollLockY, behavior: 'instant' });
 }
 
 function toggleMenu(open) {
   const wasOpen = navMenu.classList.contains('open');
-  if (open === wasOpen) return; // sem mudança
+  if (open === wasOpen) return;
 
   hamburgerBtn.classList.toggle('open', open);
   navMenu.classList.toggle('open', open);
   hamburgerBtn.setAttribute('aria-expanded', String(open));
   hamburgerBtn.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
 
-  if (open) {
-    lockScroll();
-  } else {
-    unlockScroll();
-  }
+  open ? lockScroll() : unlockScroll();
 }
 
 hamburgerBtn.addEventListener('click', () => {
   toggleMenu(!navMenu.classList.contains('open'));
 });
 
-// Fecha ao clicar em qualquer link dentro do nav (links + CTA)
+/*
+ * Navegação interna do menu mobile:
+ * Toda a lógica de fechar + rolar fica aqui (event delegation no navMenu).
+ *
+ * Fluxo para links internos (#secao):
+ *   1. e.preventDefault() — evita o jump nativo do <a>
+ *   2. toggleMenu(false)  — remove html.menu-open (scroll destravado)
+ *   3. requestAnimationFrame — aguarda o browser processar o unlock
+ *   4. window.scrollTo({ smooth }) — rola até a seção
+ *
+ * Fluxo para links externos (WhatsApp CTA etc.):
+ *   Só fecha o menu, deixa o browser navegar normalmente.
+ */
 navMenu.addEventListener('click', (e) => {
-  if (e.target.closest('a')) {
+  const link = e.target.closest('a');
+  if (!link) return;
+
+  const href = link.getAttribute('href') || '';
+
+  if (href.startsWith('#') && href.length > 1) {
+    // Link interno: gerenciamos tudo aqui
+    e.preventDefault();
+    const targetId = href.slice(1);
+    const targetEl = document.getElementById(targetId);
+
+    toggleMenu(false); // destravar scroll
+
+    requestAnimationFrame(() => {
+      if (!targetEl) return;
+      const headerH = header.offsetHeight;
+      const top = targetEl.getBoundingClientRect().top + window.scrollY - headerH - 4;
+      window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
+    });
+  } else {
+    // Link externo (WhatsApp, Instagram etc.): só fecha o menu
     toggleMenu(false);
   }
 });
 
-// Fecha com ESC
+// Fecha com ESC — foca o botão hamburguer de volta
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape' && navMenu.classList.contains('open')) {
     toggleMenu(false);
@@ -93,10 +116,15 @@ document.addEventListener('keydown', (e) => {
   }
 });
 
-
-/* ─── SCROLL SUAVE ───────────────────────────────────── */
+/* ─── SCROLL SUAVE (links fora do menu mobile) ───────── */
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
+    /*
+     * Se o menu mobile está aberto, o handler acima (navMenu delegation)
+     * já gerenciou o preventDefault + scroll. Não interferir aqui.
+     */
+    if (navMenu.classList.contains('open')) return;
+
     const target = document.querySelector(this.getAttribute('href'));
     if (!target) return;
     e.preventDefault();
@@ -105,6 +133,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     window.scrollTo({ top, behavior: 'smooth' });
   });
 });
+
 
 /* ─── INTERSECTION OBSERVER (animações reveal) ───────── */
 const revealEls = document.querySelectorAll('.reveal');
