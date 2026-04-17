@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Atendimento estético personalizado em Salvador/BA. Massagem relaxante, drenagem linfática, limpeza de pele, depilação e mais. Agende agora pelo WhatsApp!" />
+  <meta name="keywords" content="esteticista salvador, atendimento domiciliar salvador, massagem relaxante, drenagem linfática, limpeza de pele, depilação salvador" />
+  <meta name="author" content="Ludmila Paixão" />
+  <meta property="og:title" content="Ludmila Paixão — Esteticista em Salvador" />
+  <meta property="og:description" content="Atendimento estético personalizado no conforto da sua casa. Salvador/BA." />
+  <meta property="og:type" content="website" />
+
+  <title>Ludmila Paixão — Esteticista em Salvador | Atendimento Domiciliar</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="css/style.css?v=2" />
+</head>
+<body>
+
+  <!-- =========================================================
+       HEADER / NAV
+  ========================================================= -->
+  <header id="header" class="header">
+    <div class="container header__inner">
+      <a href="#hero" class="header__logo" aria-label="Ludmila Paixão — Início">
+        <span class="logo-name">Ludmila Paixão</span>
+        <span class="logo-sub">Estética</span>
+      </a>
+
+      <nav class="header__nav" id="nav-menu" role="navigation" aria-label="Menu principal">
+        <ul class="nav__list">
+          <li><a href="#servicos" class="nav__link">Serviços</a></li>
+          <li><a href="#sobre" class="nav__link">Sobre</a></li>
+          <li><a href="#diferenciais" class="nav__link">Diferenciais</a></li>
+          <li><a href="#depoimentos" class="nav__link">Depoimentos</a></li>
+          <li><a href="#galeria" class="nav__link">Galeria</a></li>
+          <li><a href="#faq" class="nav__link">FAQ</a></li>
+          <li>
+            <a href="https://wa.me/5571982080832?text=Ol%C3%A1%2C+Ludmila!+Vim+pelo+seu+site+e+gostaria+de+agendar+um+atendimento"
+               class="btn btn--gold nav__cta"
+               target="_blank" rel="noopener" id="nav-whatsapp-btn"
+               aria-label="Agendar pelo WhatsApp">
+              <i class="fa-brands fa-whatsapp"></i> Agendar
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <button class="header__hamburger" id="hamburger-btn" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav-menu">
+        <span class="hamburger__bar"></span>
+        <span class="hamburger__bar"></span>
+        <span class="hamburger__bar"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- =========================================================
+       HERO
+  ========================================================= -->
+  <section id="hero" class="hero">
+    <div class="hero__bg" aria-hidden="true"></div>
+    <div class="hero__overlay" aria-hidden="true"></div>
+    <div class="container hero__content">
+      <p class="hero__eyebrow fade-in">Esteticista em Salvador · Atendimento Domiciliar</p>
+      <h1 class="hero__title fade-in fade-in--delay-1">
+        Realce sua<br /><em>beleza natural</em>
+      </h1>
+      <p class="hero__subtitle fade-in fade-in--delay-2">
+        Atendimento estético personalizado no conforto da sua casa.<br />
+        Técnicas modernas, cuidado exclusivo, resultados reais.
+      </p>
+      <div class="hero__actions fade-in fade-in--delay-3">
+        <a href="https://wa.me/5571982080832?text=Ol%C3%A1%2C+Ludmila!+Vim+pelo+seu+site+e+gostaria+de+agendar+um+atendimento"
+           class="btn btn--primary btn--lg"
+           target="_blank" rel="noopener" id="hero-whatsapp-btn"
+           aria-label="Agendar atendimento pelo WhatsApp">
+          <i class="fa-brands fa-whatsapp"></i>
+          Agendar pelo WhatsApp
+        </a>
+        <a href="#servicos" class="btn btn--ghost btn--lg" id="hero-services-btn">
+          Ver serviços <i class="fa-solid fa-arrow-down"></i>
+        </a>
+      </div>
+      <div class="hero__stats fade-in fade-in--delay-4">
+        <div class="hero__stat">
+          <span class="stat__number">5+</span>
+          <span class="stat__label">Anos de experiência</span>
+        </div>
+        <div class="hero__stat-divider" aria-hidden="true"></div>
+        <div class="hero__stat">
+          <span class="stat__number">300+</span>
+          <span class="stat__label">Clientes atendidas</span>
+        </div>
+        <div class="hero__stat-divider" aria-hidden="true"></div>
+        <div class="hero__stat">
+          <span class="stat__number">7</span>
+          <span class="stat__label">Especialidades</span>
+        </div>
+      </div>
+    </div>
+    <a href="#servicos" class="hero__scroll-cue" aria-label="Rolar para baixo">
+      <i class="fa-solid fa-chevron-down"></i>
+    </a>
+  </section>
+
+  <!-- =========================================================
+       SERVIÇOS
+  ========================================================= -->
+  <section id="servicos" class="section section--dark">
+    <div class="container">
+      <div class="section__header reveal">
+        <span class="section__tag">O que ofereço</span>
+        <h2 class="section__title">Nossos Serviços</h2>
+        <p class="section__subtitle">Cada atendimento é pensado para o seu bem-estar e resultado real.</p>
+      </div>
+
+      <div class="services__grid">
+
+        <article class="service-card reveal">
+          <div class="service-card__icon" aria-hidden="true">
+            <i class="fa-solid fa-leaf"></i>
+          </div>
+          <h3 class="service-card__title">Depilação</h3>
+          <p class="service-card__desc">Técnica suave para uma pele lisa e sem irritações. Indicada para todos os tipos de pele, com produtos de qualidade premium.</p>
+        </article>
+
+        <article class="service-card reveal">
+          <div class="service-card__icon" aria-hidden="true">
+            <i class="fa-solid fa-droplet"></i>
+          </div>
+          <h3 class="service-card__title">Drenagem Linfática</h3>
+          <p class="service-card__desc">Ativa a circulação, reduz inchaços e elimina toxinas. Ideal para pós-operatório e bem-estar geral.</p>
+        </article>
+
+        <article class="service-card reveal">
+          <div class="service-card__icon" aria-hidden="true">
+            <i class="fa-solid fa-circle-dot"></i>
+          </div>
+          <h3 class="service-card__title">Ventosaterapia</h3>
+          <p class="service-card__desc">Técnica milenar com ventosas que alivia tensões musculares, melhora a circulação e desintoxica o organismo.</p>
+        </article>
+
+        <article class="service-card reveal">
+          <div class="service-card__icon" aria-hidden="true">
+            <i class="fa-solid fa-spa"></i>
+          </div>
+          <h3 class="service-card__title">Massagem Relaxante</h3>
+          <p class="service-card__desc">Libera a tensão do dia a dia com manobras suaves e envolventes. Mente e corpo em equilíbrio.</p>
+        </article>
+
+        <article class="service-card reveal">
+          <div class="service-card__icon" aria-hidden="true">
+            <i class="fa-solid fa-hands"></i>
+          </div>
+          <h3 class="service-card__title">Massagem Modeladora</h3>
+          <p class="service-card__desc">Define contornos, combate a celulite e melhora o tônus da pele com manobras específicas de modelagem corporal.</p>
+        </article>
+
+        <article class="service-card reveal">
+          <div class="service-card__icon" aria-hidden="true">
+            <i class="fa-solid fa-face-smile"></i>
+          </div>
+          <h3 class="service-card__title">Limpeza de Pele</h3>
+          <p class="service-card__desc">Higienização profunda, extração de cravos e hidratação. Pele renovada, radiante e com aparência saudável.</p>
+        </article>
+
+        <article class="service-card reveal">
+          <div class="service-card__icon" aria-hidden="true">
+            <i class="fa-solid fa-sun"></i>
+          </div>
+          <h3 class="service-card__title">Tratamento de Manchas</h3>
+          <p class="service-card__desc">Protocolos específicos para clarear manchas de sol, melasma e acne, devolvendo a uniformidade à sua pele.</p>
+        </article>
+
+      </div>
+
+      <div class="services__cta reveal">
+        <a href="https://wa.me/5571982080832?text=Ol%C3%A1%2C+Ludmila!+Vim+pelo+seu+site+e+gostaria+de+agendar+um+atendimento"
+           class="btn btn--gold btn--lg"
+           target="_blank" rel="noopener" id="services-whatsapp-btn">
+          <i class="fa-brands fa-whatsapp"></i>
+          Solicitar atendimento
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       SOBRE
+  ========================================================= -->
+  <section id="sobre" class="section section--surface">
+    <div class="container about__inner">
+      <div class="about__image-wrap reveal">
+        <div class="about__image-frame">
+          <img src="assets/images/about-photo.png"
+               alt="Ludmila Paixão — Esteticista profissional em Salvador"
+               class="about__image"
+               loading="lazy" />
+        </div>
+        <div class="about__badge" aria-label="5 anos de experiência">
+          <span class="badge__number">5+</span>
+          <span class="badge__text">Anos de<br />Experiência</span>
+        </div>
+      </div>
+
+      <div class="about__content reveal">
+        <span class="section__tag">Quem sou eu</span>
+        <h2 class="section__title section__title--left">Sobre a Profissional</h2>
+        <p class="about__bio">
+          Olá! Sou <strong>Ludmila Paixão</strong>, esteticista apaixonada pela arte de cuidar das pessoas.
+          Formada e com anos de experiência em Salvador, dedico cada atendimento a proporcionar uma experiência
+          única, respeitando a individualidade e as necessidades de cada cliente.
+        </p>
+        <p class="about__bio">
+          Atendo de forma personalizada e domiciliar, levando praticidade e conforto para a sua rotina.
+          Cada procedimento é realizado com produtos selecionados, técnicas atualizadas e, acima de tudo,
+          muito carinho.
+        </p>
+
+        <ul class="about__certifications" aria-label="Certificações e especialidades">
+          <li class="cert-item">
+            <i class="fa-solid fa-check-circle cert-item__icon" aria-hidden="true"></i>
+            Formação em Estética e Cosmetologia
+          </li>
+          <li class="cert-item">
+            <i class="fa-solid fa-check-circle cert-item__icon" aria-hidden="true"></i>
+            Especialização em Drenagem Linfática
+          </li>
+          <li class="cert-item">
+            <i class="fa-solid fa-check-circle cert-item__icon" aria-hidden="true"></i>
+            Técnica certificada em Ventosaterapia
+          </li>
+          <li class="cert-item">
+            <i class="fa-solid fa-check-circle cert-item__icon" aria-hidden="true"></i>
+            Protocolos de tratamento de manchas e pele
+          </li>
+        </ul>
+
+        <a href="https://wa.me/5571982080832?text=Ol%C3%A1%2C+Ludmila!+Vim+pelo+seu+site+e+gostaria+de+agendar+um+atendimento"
+           class="btn btn--gold"
+           target="_blank" rel="noopener" id="about-whatsapp-btn">
+          <i class="fa-brands fa-whatsapp"></i>
+          Conversar comigo
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       DIFERENCIAIS
+  ========================================================= -->
+  <section id="diferenciais" class="section section--dark">
+    <div class="container">
+      <div class="section__header reveal">
+        <span class="section__tag">Por que me escolher</span>
+        <h2 class="section__title">Meus Diferenciais</h2>
+        <p class="section__subtitle">Mais do que estética — uma experiência completa de cuidado e bem-estar.</p>
+      </div>
+
+      <div class="differentials__grid">
+        <div class="diff-card reveal">
+          <div class="diff-card__icon-wrap" aria-hidden="true">
+            <i class="fa-solid fa-house-chimney-medical"></i>
+          </div>
+          <h3 class="diff-card__title">Atendimento Domiciliar</h3>
+          <p class="diff-card__desc">Sem deslocamento, sem fila, sem estresse. Levo o tratamento até você, no seu tempo e no seu espaço.</p>
+        </div>
+
+        <div class="diff-card reveal">
+          <div class="diff-card__icon-wrap" aria-hidden="true">
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+          </div>
+          <h3 class="diff-card__title">Técnicas Modernas</h3>
+          <p class="diff-card__desc">Protocolos atualizados, produtos premium e constante aperfeiçoamento. Sempre o que há de melhor para sua pele.</p>
+        </div>
+
+        <div class="diff-card reveal">
+          <div class="diff-card__icon-wrap" aria-hidden="true">
+            <i class="fa-solid fa-heart"></i>
+          </div>
+          <h3 class="diff-card__title">Cuidado Personalizado</h3>
+          <p class="diff-card__desc">Cada cliente é única. Cada plano é feito para você, levando em conta suas necessidades e objetivos específicos.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       DEPOIMENTOS
+  ========================================================= -->
+  <section id="depoimentos" class="section section--surface">
+    <div class="container">
+      <div class="section__header reveal">
+        <span class="section__tag">O que dizem por aí</span>
+        <h2 class="section__title">Depoimentos</h2>
+        <p class="section__subtitle">A satisfação das minhas clientes é o maior reconhecimento do meu trabalho.</p>
+      </div>
+
+      <div class="testimonials__carousel reveal" role="region" aria-label="Depoimentos de clientes">
+        <div class="testimonials__track" id="testimonials-track">
+
+          <div class="testimonial-card" role="article" aria-label="Depoimento de Camila Rodrigues">
+            <div class="testimonial-card__stars" aria-label="5 estrelas">
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+            </div>
+            <blockquote class="testimonial-card__text">
+              "A Ludmila é incrível! Fiz a drenagem linfática e me senti outra pessoa. O atendimento em casa foi um diferencial enorme — não precisei sair de casa e a experiência foi relaxante do início ao fim."
+            </blockquote>
+            <div class="testimonial-card__author">
+              <img src="assets/images/avatar-1.png" alt="Camila Rodrigues" class="author__avatar" loading="lazy" />
+              <div class="author__info">
+                <span class="author__name">Camila Rodrigues</span>
+                <span class="author__location"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Salvador, BA</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card" role="article" aria-label="Depoimento de Jéssica Oliveira">
+            <div class="testimonial-card__stars" aria-label="5 estrelas">
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+            </div>
+            <blockquote class="testimonial-card__text">
+              "Profissional impecável! Vim indicada por uma amiga e fiz a massagem modeladora. Os resultados foram visíveis logo nas primeiras sessões. Super recomendo para quem quer qualidade e atenção de verdade."
+            </blockquote>
+            <div class="testimonial-card__author">
+              <img src="assets/images/avatar-2.png" alt="Jéssica Oliveira" class="author__avatar" loading="lazy" />
+              <div class="author__info">
+                <span class="author__name">Jéssica Oliveira</span>
+                <span class="author__location"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Salvador, BA</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card" role="article" aria-label="Depoimento de Fernanda Lima">
+            <div class="testimonial-card__stars" aria-label="5 estrelas">
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+            </div>
+            <blockquote class="testimonial-card__text">
+              "Fiz o tratamento de manchas e fiquei encantada com o resultado. A Ludmila tem um cuidado especial com cada cliente, explica tudo com detalhes e passa muita confiança. É a minha esteticista de cabeça!"
+            </blockquote>
+            <div class="testimonial-card__author">
+              <img src="assets/images/avatar-3.png" alt="Fernanda Lima" class="author__avatar" loading="lazy" />
+              <div class="author__info">
+                <span class="author__name">Fernanda Lima</span>
+                <span class="author__location"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Salvador, BA</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="testimonials__controls" aria-label="Controles do carrossel">
+          <button class="carousel-btn carousel-btn--prev" id="carousel-prev" aria-label="Depoimento anterior">
+            <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
+          </button>
+          <div class="testimonials__dots" id="testimonials-dots" role="tablist" aria-label="Navegação do carrossel"></div>
+          <button class="carousel-btn carousel-btn--next" id="carousel-next" aria-label="Próximo depoimento">
+            <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       GALERIA
+  ========================================================= -->
+  <section id="galeria" class="section section--dark">
+    <div class="container">
+      <div class="section__header reveal">
+        <span class="section__tag">Nosso trabalho</span>
+        <h2 class="section__title">Galeria</h2>
+        <p class="section__subtitle">Momentos de cuidado, técnica e dedicação em cada atendimento.</p>
+      </div>
+
+      <div class="gallery__grid" id="gallery-grid" role="list" aria-label="Galeria de fotos">
+        <figure class="gallery__item reveal" role="listitem">
+          <button class="gallery__btn" data-index="0" aria-label="Ampliar foto: Drenagem Linfática">
+            <img src="assets/images/gallery-1.png" alt="Drenagem linfática — atendimento profissional" class="gallery__img" loading="lazy" />
+            <div class="gallery__overlay" aria-hidden="true">
+              <i class="fa-solid fa-magnifying-glass-plus"></i>
+              <span>Drenagem Linfática</span>
+            </div>
+          </button>
+        </figure>
+
+        <figure class="gallery__item gallery__item--tall reveal" role="listitem">
+          <button class="gallery__btn" data-index="1" aria-label="Ampliar foto: Limpeza de Pele">
+            <img src="assets/images/gallery-2.png" alt="Limpeza de pele profunda — tratamento facial" class="gallery__img" loading="lazy" />
+            <div class="gallery__overlay" aria-hidden="true">
+              <i class="fa-solid fa-magnifying-glass-plus"></i>
+              <span>Limpeza de Pele</span>
+            </div>
+          </button>
+        </figure>
+
+        <figure class="gallery__item reveal" role="listitem">
+          <button class="gallery__btn" data-index="2" aria-label="Ampliar foto: Massagem Relaxante">
+            <img src="assets/images/gallery-3.png" alt="Massagem relaxante — spa domiciliar" class="gallery__img" loading="lazy" />
+            <div class="gallery__overlay" aria-hidden="true">
+              <i class="fa-solid fa-magnifying-glass-plus"></i>
+              <span>Massagem Relaxante</span>
+            </div>
+          </button>
+        </figure>
+
+        <figure class="gallery__item reveal" role="listitem">
+          <button class="gallery__btn" data-index="3" aria-label="Ampliar foto: Ventosaterapia">
+            <img src="assets/images/gallery-4.png" alt="Ventosaterapia — técnica de ventosas" class="gallery__img" loading="lazy" />
+            <div class="gallery__overlay" aria-hidden="true">
+              <i class="fa-solid fa-magnifying-glass-plus"></i>
+              <span>Ventosaterapia</span>
+            </div>
+          </button>
+        </figure>
+
+        <figure class="gallery__item gallery__item--wide reveal" role="listitem">
+          <button class="gallery__btn" data-index="4" aria-label="Ampliar foto: Depilação">
+            <img src="assets/images/gallery-5.png" alt="Depilação profissional suave" class="gallery__img" loading="lazy" />
+            <div class="gallery__overlay" aria-hidden="true">
+              <i class="fa-solid fa-magnifying-glass-plus"></i>
+              <span>Depilação</span>
+            </div>
+          </button>
+        </figure>
+
+        <figure class="gallery__item gallery__item--tall reveal" role="listitem">
+          <button class="gallery__btn" data-index="5" aria-label="Ampliar foto: Tratamento de Manchas">
+            <img src="assets/images/gallery-6.png" alt="Tratamento de manchas — clarificação da pele" class="gallery__img" loading="lazy" />
+            <div class="gallery__overlay" aria-hidden="true">
+              <i class="fa-solid fa-magnifying-glass-plus"></i>
+              <span>Tratamento de Manchas</span>
+            </div>
+          </button>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Visualizar imagem" hidden>
+    <button class="lightbox__close" id="lightbox-close" aria-label="Fechar imagem">
+      <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+    </button>
+    <button class="lightbox__nav lightbox__nav--prev" id="lightbox-prev" aria-label="Imagem anterior">
+      <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
+    </button>
+    <div class="lightbox__content">
+      <img src="" alt="" class="lightbox__img" id="lightbox-img" />
+      <p class="lightbox__caption" id="lightbox-caption"></p>
+    </div>
+    <button class="lightbox__nav lightbox__nav--next" id="lightbox-next" aria-label="Próxima imagem">
+      <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+    </button>
+  </div>
+  <div class="lightbox__backdrop" id="lightbox-backdrop" aria-hidden="true" hidden></div>
+
+  <!-- =========================================================
+       FAQ
+  ========================================================= -->
+  <section id="faq" class="section section--surface">
+    <div class="container">
+      <div class="section__header reveal">
+        <span class="section__tag">Dúvidas frequentes</span>
+        <h2 class="section__title">FAQ</h2>
+        <p class="section__subtitle">Respondendo as perguntas mais comuns antes do seu atendimento.</p>
+      </div>
+
+      <div class="faq__list reveal" role="list" aria-label="Perguntas frequentes">
+
+        <div class="faq__item" role="listitem">
+          <button class="faq__question" aria-expanded="false" id="faq-q1" aria-controls="faq-a1">
+            <span>Os procedimentos doem?</span>
+            <i class="fa-solid fa-plus faq__icon" aria-hidden="true"></i>
+          </button>
+          <div class="faq__answer" id="faq-a1" role="region" aria-labelledby="faq-q1" hidden>
+            <p>A grande maioria dos procedimentos é indolor ou levemente desconfortável. Técnicas como a massagem relaxante e a drenagem linfática são agradáveis e proporcionam sensação de bem-estar. Caso você tenha sensibilidade, basta comunicar e adaptamos o protocolo para o seu conforto.</p>
+          </div>
+        </div>
+
+        <div class="faq__item" role="listitem">
+          <button class="faq__question" aria-expanded="false" id="faq-q2" aria-controls="faq-a2">
+            <span>Quantas sessões são necessárias?</span>
+            <i class="fa-solid fa-plus faq__icon" aria-hidden="true"></i>
+          </button>
+          <div class="faq__answer" id="faq-a2" role="region" aria-labelledby="faq-q2" hidden>
+            <p>Depende do objetivo e do procedimento escolhido. Para manutenção e relaxamento, uma sessão por semana já é excelente. Para tratamentos como modelagem corporal ou manchas, costumamos recomendar um protocolo de 8 a 10 sessões. Na primeira consulta, faço uma avaliação gratuita e monto um plano personalizado para você.</p>
+          </div>
+        </div>
+
+        <div class="faq__item" role="listitem">
+          <button class="faq__question" aria-expanded="false" id="faq-q3" aria-controls="faq-a3">
+            <span>Você realmente atende em domicílio?</span>
+            <i class="fa-solid fa-plus faq__icon" aria-hidden="true"></i>
+          </button>
+          <div class="faq__answer" id="faq-a3" role="region" aria-labelledby="faq-q3" hidden>
+            <p>Sim! Atendo exclusivamente de forma domiciliar em Salvador e região. Levo todo o material necessário: maca portátil, produtos profissionais e equipamentos específicos. Você não precisa se preocupar com nada — só relaxar e aproveitar.</p>
+          </div>
+        </div>
+
+        <div class="faq__item" role="listitem">
+          <button class="faq__question" aria-expanded="false" id="faq-q4" aria-controls="faq-a4">
+            <span>Há contraindicações para os tratamentos?</span>
+            <i class="fa-solid fa-plus faq__icon" aria-hidden="true"></i>
+          </button>
+          <div class="faq__answer" id="faq-a4" role="region" aria-labelledby="faq-q4" hidden>
+            <p>Sim, alguns procedimentos possuem contraindicações específicas, como gestação, infecções cutâneas ativas, ou doenças circulatórias. Por isso, realizamos uma anamnese completa antes de iniciar qualquer tratamento, garantindo sua segurança e os melhores resultados.</p>
+          </div>
+        </div>
+
+        <div class="faq__item" role="listitem">
+          <button class="faq__question" aria-expanded="false" id="faq-q5" aria-controls="faq-a5">
+            <span>Como faço para agendar meu atendimento?</span>
+            <i class="fa-solid fa-plus faq__icon" aria-hidden="true"></i>
+          </button>
+          <div class="faq__answer" id="faq-a5" role="region" aria-labelledby="faq-q5" hidden>
+            <p>É bem simples! Clique no botão abaixo ou me chame diretamente no WhatsApp. Vou te retornar rapidinho para verificar disponibilidade, tirar dúvidas e agendar a sua sessão. As vagas são limitadas por semana, então agende logo! 🙏</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="faq__cta reveal">
+        <p class="faq__cta-text">Ainda com dúvidas? Vou adorar te ajudar! 💬</p>
+        <a href="https://wa.me/5571982080832?text=Ol%C3%A1%2C+Ludmila!+Vim+pelo+seu+site+e+gostaria+de+agendar+um+atendimento"
+           class="btn btn--gold btn--lg"
+           target="_blank" rel="noopener" id="faq-whatsapp-btn">
+          <i class="fa-brands fa-whatsapp"></i>
+          Me chame no WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       CONTATO
+  ========================================================= -->
+  <section id="contato" class="section section--dark">
+    <div class="container contact__inner">
+      <div class="contact__info reveal">
+        <span class="section__tag">Vamos conversar</span>
+        <h2 class="section__title section__title--left">Entre em Contato</h2>
+        <p class="contact__desc">
+          Pronto para cuidar de você? Me manda uma mensagem e vamos agendar o seu atendimento. As vagas são limitadas — garanta a sua!
+        </p>
+
+        <div class="contact__details">
+          <div class="contact__detail-item">
+            <div class="contact__detail-icon" aria-hidden="true">
+              <i class="fa-brands fa-whatsapp"></i>
+            </div>
+            <div>
+              <span class="contact__detail-label">WhatsApp</span>
+              <a href="https://wa.me/5571982080832?text=Ol%C3%A1%2C+Ludmila!+Vim+pelo+seu+site+e+gostaria+de+agendar+um+atendimento"
+                 class="contact__detail-value" target="_blank" rel="noopener" id="contact-phone-link">
+                (71) 9 8208-0832
+              </a>
+            </div>
+          </div>
+          <div class="contact__detail-item">
+            <div class="contact__detail-icon" aria-hidden="true">
+              <i class="fa-brands fa-instagram"></i>
+            </div>
+            <div>
+              <span class="contact__detail-label">Instagram</span>
+              <a href="https://instagram.com/luudmilapaixao" class="contact__detail-value" target="_blank" rel="noopener" id="contact-instagram-link">
+                @luudmilapaixao
+              </a>
+            </div>
+          </div>
+          <div class="contact__detail-item">
+            <div class="contact__detail-icon" aria-hidden="true">
+              <i class="fa-solid fa-location-dot"></i>
+            </div>
+            <div>
+              <span class="contact__detail-label">Atendimento</span>
+              <span class="contact__detail-value">Salvador e região — BA</span>
+            </div>
+          </div>
+          <div class="contact__detail-item">
+            <div class="contact__detail-icon" aria-hidden="true">
+              <i class="fa-solid fa-clock"></i>
+            </div>
+            <div>
+              <span class="contact__detail-label">Horário</span>
+              <span class="contact__detail-value">(Em desenvolvimento)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact__form-wrap reveal">
+        <form class="contact__form" id="contact-form" aria-label="Formulário de contato" novalidate>
+          <div class="form__group">
+            <label for="form-name" class="form__label">Seu nome</label>
+            <input type="text" id="form-name" name="name" class="form__input" placeholder="Como devo te chamar?" required autocomplete="name" />
+          </div>
+          <div class="form__group">
+            <label for="form-phone" class="form__label">WhatsApp / Telefone</label>
+            <input type="tel" id="form-phone" name="phone" class="form__input" placeholder="(71) 9 0000-0000" required autocomplete="tel" />
+          </div>
+          <div class="form__group">
+            <label for="form-service" class="form__label">Serviço de interesse</label>
+            <select id="form-service" name="service" class="form__input form__select" required>
+              <option value="" disabled selected>Selecione um serviço</option>
+              <option value="Depilação">Depilação</option>
+              <option value="Drenagem Linfática">Drenagem Linfática</option>
+              <option value="Ventosaterapia">Ventosaterapia</option>
+              <option value="Massagem Relaxante">Massagem Relaxante</option>
+              <option value="Massagem Modeladora">Massagem Modeladora</option>
+              <option value="Limpeza de Pele">Limpeza de Pele</option>
+              <option value="Tratamento de Manchas">Tratamento de Manchas</option>
+            </select>
+          </div>
+          <div class="form__group">
+            <label for="form-message" class="form__label">Mensagem (opcional)</label>
+            <textarea id="form-message" name="message" class="form__input form__textarea" placeholder="Conte um pouco sobre o que você precisa..." rows="3"></textarea>
+          </div>
+          <button type="submit" class="btn btn--gold btn--full" id="contact-submit-btn">
+            <i class="fa-brands fa-whatsapp"></i>
+            Enviar pelo WhatsApp
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       FOOTER
+  ========================================================= -->
+  <footer class="footer" role="contentinfo">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <a href="#hero" class="footer__logo" aria-label="Ir para o topo">
+          <span class="logo-name">Ludmila Paixão</span>
+          <span class="logo-sub">Estética</span>
+        </a>
+        <p class="footer__tagline">Realce sua beleza natural.</p>
+        <div class="footer__socials" aria-label="Redes sociais">
+          <a href="https://instagram.com/luudmilapaixao" class="social-btn" target="_blank" rel="noopener" aria-label="Instagram de Ludmila Paixão" id="footer-instagram-btn">
+            <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+          </a>
+          <a href="https://wa.me/5571982080832?text=Ol%C3%A1%2C+Ludmila!+Vim+pelo+seu+site+e+gostaria+de+agendar+um+atendimento"
+             class="social-btn" target="_blank" rel="noopener" aria-label="WhatsApp de Ludmila Paixão" id="footer-whatsapp-btn">
+            <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+
+      <nav class="footer__nav" aria-label="Links do rodapé">
+        <h3 class="footer__nav-title">Navegação</h3>
+        <ul class="footer__nav-list">
+          <li><a href="#servicos" class="footer__nav-link">Serviços</a></li>
+          <li><a href="#sobre" class="footer__nav-link">Sobre</a></li>
+          <li><a href="#diferenciais" class="footer__nav-link">Diferenciais</a></li>
+          <li><a href="#depoimentos" class="footer__nav-link">Depoimentos</a></li>
+          <li><a href="#galeria" class="footer__nav-link">Galeria</a></li>
+          <li><a href="#faq" class="footer__nav-link">FAQ</a></li>
+        </ul>
+      </nav>
+
+      <div class="footer__contact">
+        <h3 class="footer__nav-title">Contato</h3>
+        <ul class="footer__contact-list">
+          <li>
+            <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+            <a href="https://wa.me/5571982080832?text=Ol%C3%A1%2C+Ludmila!+Vim+pelo+seu+site+e+gostaria+de+agendar+um+atendimento"
+               target="_blank" rel="noopener" id="footer-phone-link">(71) 9 8208-0832</a>
+          </li>
+          <li>
+            <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+            <a href="https://instagram.com/luudmilapaixao" target="_blank" rel="noopener" id="footer-instagram-link">@luudmilapaixao</a>
+          </li>
+          <li>
+            <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+            <span>Salvador, Bahia — BA</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <div class="container footer__bottom-inner">
+        <p class="footer__copy">© 2026 Ludmila Paixão Estética · Todos os direitos reservados.</p>
+        <p class="footer__credits">Desenvolvido por <a href="https://arthur-portifolio.lovable.app/" target="_blank" rel="noopener">Arthur Vieira</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Flutuante -->
+  <a href="https://wa.me/5571982080832?text=Ol%C3%A1%2C+Ludmila!+Vim+pelo+seu+site+e+gostaria+de+agendar+um+atendimento"
+     class="whatsapp-float"
+     target="_blank" rel="noopener"
+     id="whatsapp-float-btn"
+     aria-label="Fale comigo no WhatsApp"
+     role="button">
+    <i class="fa-brands fa-whatsapp whatsapp-float__icon" aria-hidden="true"></i>
+    <span class="whatsapp-float__tooltip">Agendar pelo WhatsApp</span>
+  </a>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+</body>
+</html>
