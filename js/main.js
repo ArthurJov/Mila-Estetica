@@ -5,6 +5,25 @@
 
 'use strict';
 
+/* ─── CONFIGURAÇÃO (lida do config.js) ──────────────────── */
+// Se o config.js não for carregado (ex: ambiente de dev sem o arquivo),
+// usamos valores vazios para não quebrar a página.
+const cfg = (typeof SITE_CONFIG !== 'undefined')
+  ? SITE_CONFIG
+  : { whatsappNumber: '', instagram: '', whatsappDefaultMsg: '' };
+
+const WA_BASE = cfg.whatsappNumber
+  ? `https://wa.me/${cfg.whatsappNumber}?text=${encodeURIComponent(cfg.whatsappDefaultMsg)}`
+  : '#';
+
+// Substitui dinamicamente todos os hrefs de WhatsApp e Instagram no HTML
+document.querySelectorAll('a[data-wa]').forEach(el => {
+  el.href = WA_BASE;
+});
+document.querySelectorAll('a[data-ig]').forEach(el => {
+  if (cfg.instagram) el.href = `https://instagram.com/${cfg.instagram}`;
+});
+
 /* ─── HEADER SCROLL ─────────────────────────────────── */
 const header = document.getElementById('header');
 
@@ -234,7 +253,6 @@ faqQuestions.forEach(btn => {
 
 /* ─── FORMULÁRIO DE CONTATO → WhatsApp ───────────────── */
 const contactForm = document.getElementById('contact-form');
-const WA_NUMBER   = '5571982080832';
 
 contactForm?.addEventListener('submit', e => {
   e.preventDefault();
@@ -254,7 +272,7 @@ contactForm?.addEventListener('submit', e => {
   if (message) text += ` Mensagem: ${message}`;
   text += ` Vi seu site e gostaria de agendar um atendimento.`;
 
-  const url = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`;
+  const url = `https://wa.me/${cfg.whatsappNumber}?text=${encodeURIComponent(text)}`;
   window.open(url, '_blank', 'noopener');
 });
 

@@ -1,0 +1,21 @@
+# ─── Dados sensíveis ─────────────────────────────────────
+# O arquivo de configuração real com número de WhatsApp,
+# Instagram e outros dados privados não deve ir para o Git.
+js/config.js
+
+# ─── Dependências ─────────────────────────────────────────
+node_modules/
+
+# ─── Arquivos de sistema ───────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ─── Logs e temporários ────────────────────────────────────
+*.log
+*.tmp
+*.bak
+
+# ─── Editors ──────────────────────────────────────────────
+.vscode/settings.json
+.idea/
