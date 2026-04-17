@@ -5,12 +5,15 @@
 
 'use strict';
 
-/* ─── CONFIGURAÇÃO (lida do config.js) ──────────────────── */
-// Se o config.js não for carregado (ex: ambiente de dev sem o arquivo),
-// usamos valores vazios para não quebrar a página.
-const cfg = (typeof SITE_CONFIG !== 'undefined')
-  ? SITE_CONFIG
-  : { whatsappNumber: '', instagram: '', whatsappDefaultMsg: '' };
+/* ─── CONFIGURAÇÃO ────────────────────────────────────── */
+const cfg = {
+  // Número do WhatsApp (apenas dígitos, com DDI)
+  whatsappNumber: '5571982080832',
+  // Instagram (sem o @)
+  instagram: 'luudmilapaixao',
+  // Mensagem padrão enviada pelo WhatsApp
+  whatsappDefaultMsg: 'Olá, Ludmila! Vim pelo seu site e gostaria de agendar um atendimento'
+};
 
 const WA_BASE = cfg.whatsappNumber
   ? `https://api.whatsapp.com/send?phone=${cfg.whatsappNumber.replace(/\D/g, '')}&text=${encodeURIComponent(cfg.whatsappDefaultMsg || '')}`
