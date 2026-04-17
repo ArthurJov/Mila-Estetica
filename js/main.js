@@ -13,15 +13,27 @@ const cfg = (typeof SITE_CONFIG !== 'undefined')
   : { whatsappNumber: '', instagram: '', whatsappDefaultMsg: '' };
 
 const WA_BASE = cfg.whatsappNumber
-  ? `https://wa.me/${cfg.whatsappNumber}?text=${encodeURIComponent(cfg.whatsappDefaultMsg)}`
+  ? `https://api.whatsapp.com/send?phone=${cfg.whatsappNumber.replace(/\D/g, '')}&text=${encodeURIComponent(cfg.whatsappDefaultMsg || '')}`
   : '#';
 
-// Substitui dinamicamente todos os hrefs de WhatsApp e Instagram no HTML
+// Substitui dinamicamente todos os hrefs de WhatsApp no HTML
 document.querySelectorAll('a[data-wa]').forEach(el => {
-  el.href = WA_BASE;
+  el.setAttribute('href', WA_BASE);
+  // Adiciona listener redundante garantido (corrige bloqueios passivos)
+  el.addEventListener('click', (e) => {
+    // Se href for válido, permite navegação normal, senão não faz nada
+    if (WA_BASE !== '#') {
+      // Deixa o browser abrir o link, evita interferência de outros JSs globais em alguns browsers
+    } else {
+      e.preventDefault();
+    }
+  });
 });
+
 document.querySelectorAll('a[data-ig]').forEach(el => {
-  if (cfg.instagram) el.href = `https://instagram.com/${cfg.instagram}`;
+  if (cfg.instagram) {
+    el.setAttribute('href', `https://instagram.com/${cfg.instagram}`);
+  }
 });
 
 /* ─── HEADER SCROLL ─────────────────────────────────── */
@@ -121,7 +133,8 @@ document.addEventListener('keydown', (e) => {
 });
 
 /* ─── SCROLL SUAVE (links fora do menu mobile) ───────── */
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+// Seleciona todos os links âncora, mas EXCLUI explicitamente os botões do WhatsApp e Instagram para evitar que o smooth scroll trave seu clique via event.preventDefault() acidental.
+document.querySelectorAll('a[href^="#"]:not([data-wa]):not([data-ig])').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
     /*
      * Se o menu mobile está aberto, o handler acima (navMenu delegation)
@@ -340,7 +353,8 @@ contactForm?.addEventListener('submit', e => {
   if (message) text += ` Mensagem: ${message}`;
   text += ` Vi seu site e gostaria de agendar um atendimento.`;
 
-  const url = `https://wa.me/${cfg.whatsappNumber}?text=${encodeURIComponent(text)}`;
+  const cleanPhone = cfg.whatsappNumber ? cfg.whatsappNumber.replace(/\D/g, '') : '';
+  const url = `https://api.whatsapp.com/send?phone=${cleanPhone}&text=${encodeURIComponent(text)}`;
   window.open(url, '_blank', 'noopener');
 });
 
