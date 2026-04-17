@@ -13,6 +13,12 @@
 html {
   scroll-behavior: smooth;
   font-size: 16px;
+  overflow-x: hidden; /* aqui para não quebrar position:fixed em mobile */
+}
+
+/* Trava scroll quando o menu mobile está aberto */
+html.menu-open {
+  overflow: hidden;
 }
 
 body {
@@ -20,7 +26,6 @@ body {
   background-color: var(--color-bg);
   color: var(--color-text);
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
 }
 
 img {
@@ -265,7 +270,12 @@ button {
   top: 0;
   left: 0;
   right: 0;
-  z-index: 1000;
+  /*
+   * Z-index: 1200 — acima do nav overlay (1100)
+   * Isso garante que logo + btn hamburguer (que viram X) fiquem
+   * sempre visíveis sobre o menu aberto, em qualquer posição de scroll.
+   */
+  z-index: 1200;
   padding-block: 1.1rem;
   transition: background var(--transition-med), padding var(--transition-med), box-shadow var(--transition-med);
 }
@@ -277,6 +287,11 @@ button {
   border-bottom: 1px solid var(--color-border);
   padding-block: 0.75rem;
   box-shadow: var(--shadow-md);
+  /*
+   * NOTA: backdrop-filter cria um novo containing block para position:fixed.
+   * Por isso o <nav> foi movido para fora do <header> no HTML —
+   * assim esse backdrop-filter não afeta o overlay do menu.
+   */
 }
 
 .header__inner {
@@ -288,7 +303,7 @@ button {
 
 .header__logo {
   flex-shrink: 0;
-  z-index: 10;
+  /* Sem z-index próprio: herda do header (z-index: 1200) */
 }
 
 .header__nav {
@@ -323,10 +338,18 @@ button {
 .header__hamburger {
   display: none;
   flex-direction: column;
+  justify-content: center;
   gap: 5px;
-  width: 30px;
-  z-index: 10;
-  padding: 4px;
+  width: 44px;   /* área de toque maior para mobile */
+  height: 44px;
+  padding: 8px 7px;
+  border-radius: var(--radius-sm);
+  /* Sem z-index próprio: herda do header (z-index: 1200) */
+  transition: background var(--transition-fast);
+}
+
+.header__hamburger:hover {
+  background: rgba(255, 255, 255, 0.06);
 }
 
 .hamburger__bar {
@@ -335,7 +358,8 @@ button {
   height: 2px;
   background: var(--color-text);
   border-radius: var(--radius-full);
-  transition: all var(--transition-med);
+  transition: transform 0.35s ease, opacity 0.35s ease;
+  transform-origin: center;
 }
 
 .header__hamburger.open .hamburger__bar:nth-child(1) {
@@ -1396,44 +1420,90 @@ a.contact__detail-value:hover { color: var(--color-gold); }
     --container-px: 1rem;
   }
 
-  /* Nav mobile */
+  /* ── Nav mobile ──────────────────────────────────────────
+   * O <nav> está fora do <header> no HTML, portanto seu
+   * position: fixed é sempre relativo ao viewport real,
+   * nunca afetado pelo backdrop-filter do header.scrolled.
+   * ──────────────────────────────────────────────────────── */
   .header__hamburger { display: flex; }
 
   .header__nav {
     position: fixed;
-    inset: 0;
-    background: rgba(8,8,8,0.97);
-    backdrop-filter: blur(20px);
+    top: 0;
+    left: 0;
+    width: 100vw;
+    /* dvh = dynamic viewport height (lida com address bar móvel) */
+    height: 100dvh;
+    height: 100vh; /* fallback para browsers sem suporte a dvh */
+    background: rgba(10, 8, 5, 0.98);
+    backdrop-filter: blur(24px) saturate(1.2);
+    -webkit-backdrop-filter: blur(24px) saturate(1.2);
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    transition: opacity var(--transition-med), visibility var(--transition-med);
+    /* z-index: abaixo do header (1200) para o X ficar visível */
+    z-index: 1100;
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    overflow-y: auto;
+    overscroll-behavior: contain;
   }
 
   .header__nav.open {
     opacity: 1;
     visibility: visible;
-    pointer-events: all;
+    pointer-events: auto;
+  }
+
+  /* Animação de entrada dos itens ao abrir o menu */
+  .header__nav.open .nav__list li {
+    animation: navItemIn 0.4s ease forwards;
+    opacity: 0;
+  }
+  .header__nav.open .nav__list li:nth-child(1) { animation-delay: 0.05s; }
+  .header__nav.open .nav__list li:nth-child(2) { animation-delay: 0.10s; }
+  .header__nav.open .nav__list li:nth-child(3) { animation-delay: 0.15s; }
+  .header__nav.open .nav__list li:nth-child(4) { animation-delay: 0.20s; }
+  .header__nav.open .nav__list li:nth-child(5) { animation-delay: 0.25s; }
+  .header__nav.open .nav__list li:nth-child(6) { animation-delay: 0.30s; }
+  .header__nav.open .nav__list li:nth-child(7) { animation-delay: 0.35s; }
+
+  @keyframes navItemIn {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
   }
 
   .nav__list {
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0;
     text-align: center;
+    width: 100%;
+    padding: 1.5rem 0;
   }
 
   .nav__link {
-    font-size: 1.5rem;
-    padding: 0.75rem 1.5rem;
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    font-weight: 300;
+    letter-spacing: 0.04em;
+    padding: 0.9rem 2rem;
+    display: block;
+    color: var(--color-text-dim);
+    transition: color 0.2s ease, letter-spacing 0.2s ease;
+  }
+
+  .nav__link:hover,
+  .nav__link:focus-visible {
+    color: var(--color-gold);
+    letter-spacing: 0.08em;
   }
 
   .nav__cta {
     margin-left: 0;
-    margin-top: 1rem;
-    padding: 0.75rem 2rem;
+    margin-top: 2.5rem;
+    padding: 0.9rem 2.75rem;
     font-size: 1rem;
   }
 

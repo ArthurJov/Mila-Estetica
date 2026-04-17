@@ -39,25 +39,60 @@ const hamburgerBtn = document.getElementById('hamburger-btn');
 const navMenu      = document.getElementById('nav-menu');
 const navLinks     = document.querySelectorAll('.nav__link');
 
+/*
+ * Scroll Lock robusto:
+ * - Salva scrollY antes de travar para não perder posição
+ * - Usa overflow: hidden no <html> (não no body — body.style.overflow
+ *   num browser mobile cria novo containing block e quebra position:fixed)
+ */
+let scrollLockY = 0;
+
+function lockScroll() {
+  scrollLockY = window.scrollY;
+  document.documentElement.classList.add('menu-open');
+}
+
+function unlockScroll() {
+  document.documentElement.classList.remove('menu-open');
+  // Restaura posição sem animação visual
+  window.scrollTo({ top: scrollLockY, behavior: 'instant' });
+}
+
 function toggleMenu(open) {
+  const wasOpen = navMenu.classList.contains('open');
+  if (open === wasOpen) return; // sem mudança
+
   hamburgerBtn.classList.toggle('open', open);
   navMenu.classList.toggle('open', open);
   hamburgerBtn.setAttribute('aria-expanded', String(open));
-  document.body.style.overflow = open ? 'hidden' : '';
+  hamburgerBtn.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
+
+  if (open) {
+    lockScroll();
+  } else {
+    unlockScroll();
+  }
 }
 
 hamburgerBtn.addEventListener('click', () => {
-  const isOpen = navMenu.classList.contains('open');
-  toggleMenu(!isOpen);
+  toggleMenu(!navMenu.classList.contains('open'));
 });
 
-navLinks.forEach(link => {
-  link.addEventListener('click', () => toggleMenu(false));
+// Fecha ao clicar em qualquer link dentro do nav (links + CTA)
+navMenu.addEventListener('click', (e) => {
+  if (e.target.closest('a')) {
+    toggleMenu(false);
+  }
 });
 
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape' && navMenu.classList.contains('open')) toggleMenu(false);
+// Fecha com ESC
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && navMenu.classList.contains('open')) {
+    toggleMenu(false);
+    hamburgerBtn.focus();
+  }
 });
+
 
 /* ─── SCROLL SUAVE ───────────────────────────────────── */
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -182,14 +217,14 @@ function openLightbox(idx) {
   updateLightbox();
   lightbox.removeAttribute('hidden');
   lightboxBg?.removeAttribute('hidden');
-  document.body.style.overflow = 'hidden';
+  document.documentElement.classList.add('menu-open');
   lightboxClose.focus();
 }
 
 function closeLightbox() {
   lightbox.setAttribute('hidden', '');
   lightboxBg?.setAttribute('hidden', '');
-  document.body.style.overflow = '';
+  document.documentElement.classList.remove('menu-open');
   galleryBtns[currentLightbox]?.focus();
 }
 
