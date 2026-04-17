@@ -69,6 +69,10 @@ hamburgerBtn.addEventListener('click', () => {
   toggleMenu(!navMenu.classList.contains('open'));
 });
 
+document.getElementById('nav-close-btn')?.addEventListener('click', () => {
+  toggleMenu(false);
+});
+
 /*
  * Navegação interna do menu mobile:
  * Toda a lógica de fechar + rolar fica aqui (event delegation no navMenu).

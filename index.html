@@ -30,11 +30,42 @@
   ========================================================= -->
   <header id="header" class="header">
     <div class="container header__inner">
+      <!-- 1. LOGO -->
       <a href="#hero" class="header__logo" aria-label="Ludmila Paixão — Início">
         <span class="logo-name">Ludmila Paixão</span>
         <span class="logo-sub">Estética</span>
       </a>
 
+      <!-- 2. NAV LINKS CENTRALIZADOS -->
+      <nav class="header__nav" id="nav-menu" role="navigation" aria-label="Menu principal">
+        
+        <!-- Botão X explícito para fechar no mobile -->
+        <button id="nav-close-btn" class="nav__close hide-on-desktop" aria-label="Fechar menu">&times;</button>
+        
+        <ul class="nav__list">
+          <li><a href="#servicos" class="nav__link">Serviços</a></li>
+          <li><a href="#sobre" class="nav__link">Sobre</a></li>
+          <li><a href="#diferenciais" class="nav__link">Diferenciais</a></li>
+          <li><a href="#depoimentos" class="nav__link">Depoimentos</a></li>
+          <li><a href="#galeria" class="nav__link">Galeria</a></li>
+          <li><a href="#faq" class="nav__link">FAQ</a></li>
+          <!-- CTA Mobile Only -->
+          <li class="mobile-cta-wrap hide-on-desktop">
+            <a href="#" data-wa class="btn btn--gold nav__cta" target="_blank" rel="noopener" aria-label="Agendar pelo WhatsApp">
+              <i class="fa-brands fa-whatsapp"></i> Agendar
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- 3. CTA DESKTOP -->
+      <div class="header__cta hide-on-mobile">
+        <a href="#" data-wa class="btn btn--gold nav__cta desktop-cta-btn" target="_blank" rel="noopener" id="desktop-whatsapp-btn" aria-label="Agendar pelo WhatsApp">
+          <i class="fa-brands fa-whatsapp"></i> Agendar
+        </a>
+      </div>
+
+      <!-- HAMBURGUER COMPONENT -->
       <button class="header__hamburger" id="hamburger-btn"
               aria-label="Abrir menu" aria-expanded="false" aria-controls="nav-menu">
         <span class="hamburger__bar"></span>
@@ -43,26 +74,6 @@
       </button>
     </div>
   </header>
-
-  <!-- Nav mobile: fora do header para não ser afetado pelo backdrop-filter do header.scrolled -->
-  <nav class="header__nav" id="nav-menu" role="navigation" aria-label="Menu principal">
-    <ul class="nav__list">
-      <li><a href="#servicos" class="nav__link">Serviços</a></li>
-      <li><a href="#sobre" class="nav__link">Sobre</a></li>
-      <li><a href="#diferenciais" class="nav__link">Diferenciais</a></li>
-      <li><a href="#depoimentos" class="nav__link">Depoimentos</a></li>
-      <li><a href="#galeria" class="nav__link">Galeria</a></li>
-      <li><a href="#faq" class="nav__link">FAQ</a></li>
-      <li>
-        <a href="#" data-wa
-           class="btn btn--gold nav__cta"
-           target="_blank" rel="noopener" id="nav-whatsapp-btn"
-           aria-label="Agendar pelo WhatsApp">
-          <i class="fa-brands fa-whatsapp"></i> Agendar
-        </a>
-      </li>
-    </ul>
-  </nav>
 
   <!-- =========================================================
        HERO
@@ -93,12 +104,12 @@
       </div>
       <div class="hero__stats fade-in fade-in--delay-4">
         <div class="hero__stat">
-          <span class="stat__number">5+</span>
+          <span class="stat__number">X+</span>
           <span class="stat__label">Anos de experiência</span>
         </div>
         <div class="hero__stat-divider" aria-hidden="true"></div>
         <div class="hero__stat">
-          <span class="stat__number">300+</span>
+          <span class="stat__number">X+</span>
           <span class="stat__label">Clientes atendidas</span>
         </div>
         <div class="hero__stat-divider" aria-hidden="true"></div>

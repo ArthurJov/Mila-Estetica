@@ -264,40 +264,51 @@ button {
   color: var(--color-gold);
 }
 
+/* ─── UTILITIES ────────────────────────────────────────── */
+.hide-on-desktop { display: none !important; }
+.hide-on-mobile { display: flex !important; }
+
 /* ─── HEADER ─────────────────────────────────────────── */
 .header {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  /*
-   * Z-index: 1200 — acima do nav overlay (1100)
-   * Isso garante que logo + btn hamburguer (que viram X) fiquem
-   * sempre visíveis sobre o menu aberto, em qualquer posição de scroll.
-   */
+  /* Z-index: 1200 para ficar sobre o overlay do menu mobile */
   z-index: 1200;
   padding-block: 1.1rem;
-  transition: background var(--transition-med), padding var(--transition-med), box-shadow var(--transition-med);
+  transition: padding var(--transition-med), box-shadow var(--transition-med);
 }
 
-.header.scrolled {
+/* 
+ * O backdrop-filter no ::before evita que o position:fixed
+ * dos filhos (<nav> mobile) seja quebrado.
+ */
+.header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: transparent;
+  z-index: -1;
+  transition: background var(--transition-med), backdrop-filter var(--transition-med);
+}
+
+.header.scrolled::before {
   background: rgba(13, 13, 13, 0.88);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--color-border);
+}
+
+.header.scrolled {
   padding-block: 0.75rem;
   box-shadow: var(--shadow-md);
-  /*
-   * NOTA: backdrop-filter cria um novo containing block para position:fixed.
-   * Por isso o <nav> foi movido para fora do <header> no HTML —
-   * assim esse backdrop-filter não afeta o overlay do menu.
-   */
 }
 
 .header__inner {
-  display: flex;
+  display: grid;
+  grid-template-columns: 200px 1fr 200px;
   align-items: center;
-  justify-content: space-between;
   gap: 2rem;
 }
 
@@ -309,29 +320,61 @@ button {
 .header__nav {
   display: flex;
   align-items: center;
+  justify-self: center;
+  height: 100%;
 }
 
 .nav__list {
   display: flex;
   align-items: center;
-  gap: 0.25rem;
+  gap: 1.5rem; /* Espaçamento muito mais equilibrado para desktop */
 }
 
 .nav__link {
-  padding: 0.5rem 0.85rem;
-  font-size: 0.88rem;
-  font-weight: 400;
+  position: relative;
+  padding: 0.5rem 0.25rem;
+  font-size: 0.95rem; /* Levemente maior que antes */
+  font-weight: 500;
   color: var(--color-text-dim);
   transition: color var(--transition-fast);
-  border-radius: var(--radius-sm);
 }
 
-.nav__link:hover { color: var(--color-text); }
+/* Hover e feedback visual premium para os links desktop */
+.nav__link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: var(--color-gold);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform var(--transition-med) ease;
+}
+
+.nav__link:hover { 
+  color: var(--color-text); 
+}
+
+.nav__link:hover::after,
+.nav__link:focus-visible::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.header__cta {
+  justify-self: end;
+}
 
 .nav__cta {
-  margin-left: 0.75rem;
-  padding: 0.55rem 1.25rem;
-  font-size: 0.85rem;
+  padding: 0.65rem 1.4rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 /* Hamburguer */
@@ -1414,16 +1457,31 @@ a.contact__detail-value:hover { color: var(--color-gold); }
   .footer__brand { grid-column: 1 / -1; }
 }
 
+@media (max-width: 900px) {
+  /* Em telas médias entre 768px e 900px, talvez o desktop precise de menos gap */
+  .header__inner { grid-template-columns: 180px 1fr 180px; gap: 1rem; }
+  .nav__list { gap: 1rem; }
+}
+
 @media (max-width: 768px) {
   :root {
     --section-py: 4rem;
     --container-px: 1rem;
   }
 
+  .hide-on-mobile { display: none !important; }
+  .hide-on-desktop { display: flex !important; }
+
+  /* Ajuste no header para manter logo à esquerda e hamburguer à direita no mobile */
+  .header__inner {
+    display: flex;
+    justify-content: space-between;
+    grid-template-columns: none;
+  }
+
   /* ── Nav mobile ──────────────────────────────────────────
-   * O <nav> está fora do <header> no HTML, portanto seu
-   * position: fixed é sempre relativo ao viewport real,
-   * nunca afetado pelo backdrop-filter do header.scrolled.
+   * O position: fixed funciona certinho porque o backdrop-filter
+   * foi movido para um pseudo-elemento .header::before
    * ──────────────────────────────────────────────────────── */
   .header__hamburger { display: flex; }
 
@@ -1457,6 +1515,28 @@ a.contact__detail-value:hover { color: var(--color-gold); }
     pointer-events: auto;
   }
 
+  /* Botão X explícito no mobile */
+  .nav__close {
+    position: absolute;
+    top: 1.2rem;
+    right: 1.5rem;
+    font-size: 3rem;
+    line-height: 1;
+    color: var(--color-text-dim);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: color 0.2s ease, transform 0.2s ease;
+    padding: 0.5rem;
+    font-weight: 300;
+  }
+  
+  .nav__close:hover, 
+  .nav__close:focus-visible {
+    color: var(--color-gold);
+    transform: scale(1.1);
+  }
+
   /* Animação de entrada dos itens ao abrir o menu */
   .header__nav.open .nav__list li {
     animation: navItemIn 0.4s ease forwards;
@@ -1485,7 +1565,7 @@ a.contact__detail-value:hover { color: var(--color-gold); }
 
   .nav__link {
     font-family: var(--font-serif);
-    font-size: 2rem;
+    font-size: 2.2rem; /* Um pouco maior no mobile para dar mais peso */
     font-weight: 300;
     letter-spacing: 0.04em;
     padding: 0.9rem 2rem;
@@ -1494,17 +1574,27 @@ a.contact__detail-value:hover { color: var(--color-gold); }
     transition: color 0.2s ease, letter-spacing 0.2s ease;
   }
 
+  /* Remove o underline (after) no mobile já que ele agora está no estilo base */
+  .nav__link::after { display: none; }
+
   .nav__link:hover,
   .nav__link:focus-visible {
     color: var(--color-gold);
     letter-spacing: 0.08em;
   }
 
+  .mobile-cta-wrap {
+    margin-top: 2.5rem;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
   .nav__cta {
     margin-left: 0;
-    margin-top: 2.5rem;
-    padding: 0.9rem 2.75rem;
-    font-size: 1rem;
+    margin-top: 0;
+    padding: 1rem 3rem;
+    font-size: 1.1rem;
   }
 
   /* Hero */
