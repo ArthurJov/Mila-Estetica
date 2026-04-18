@@ -143,6 +143,11 @@ button {
   box-shadow: 0 8px 32px rgba(37, 211, 102, 0.45);
 }
 
+.btn--primary:active {
+  transform: translateY(0) scale(0.97);
+  box-shadow: 0 4px 16px rgba(37, 211, 102, 0.40);
+}
+
 .btn--gold {
   background: linear-gradient(135deg, var(--color-gold), var(--color-gold-dark));
   color: #1A1408;
@@ -154,6 +159,11 @@ button {
 .btn--gold:focus-visible {
   transform: translateY(-2px);
   box-shadow: 0 8px 32px rgba(212, 175, 113, 0.45);
+}
+
+.btn--gold:active {
+  transform: translateY(0) scale(0.97);
+  box-shadow: 0 4px 16px rgba(212, 175, 113, 0.35);
 }
 
 .btn--ghost {
@@ -169,9 +179,15 @@ button {
   background: rgba(200, 173, 143, 0.06);
 }
 
+.btn--ghost:active {
+  transform: scale(0.97);
+}
+
 /* ─── SECTION SHARED ─────────────────────────────────── */
 .section {
   padding-block: var(--section-py);
+  position: relative;
+  overflow: hidden;
 }
 
 .section--dark    { background-color: var(--color-bg); }
@@ -235,12 +251,69 @@ button {
 .reveal {
   opacity: 0;
   transform: translateY(30px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
+  transition: opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.reveal--left {
+  transform: translateX(-40px);
+}
+
+.reveal--right {
+  transform: translateX(40px);
+}
+
+.reveal--scale {
+  transform: scale(0.92);
 }
 
 .reveal.visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: translate(0) scale(1) !important;
+}
+
+/* ─── FLOATING ELEMENTS ──────────────────────────────── */
+.floating-element {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.25;
+  animation: floatDrift 18s ease-in-out infinite alternate;
+}
+
+.floating-element--1 {
+  width: 350px;
+  height: 350px;
+  background: var(--color-gold);
+  top: 15%;
+  left: -150px;
+  animation-duration: 22s;
+}
+
+.floating-element--2 {
+  width: 450px;
+  height: 450px;
+  background: var(--color-beige);
+  bottom: 20%;
+  right: -200px;
+  animation-duration: 26s;
+  animation-direction: alternate-reverse;
+}
+
+.floating-element--3 {
+  width: 250px;
+  height: 250px;
+  background: var(--color-gold-dark);
+  top: 40%;
+  left: 60%;
+  animation-duration: 19s;
+}
+
+@keyframes floatDrift {
+  0%   { transform: translateY(0) scale(1); }
+  50%  { transform: translateY(-40px) scale(1.05); }
+  100% { transform: translateY(20px) scale(0.95); }
 }
 
 /* ─── LOGO ───────────────────────────────────────────── */
