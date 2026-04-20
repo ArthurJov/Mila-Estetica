@@ -183,6 +183,25 @@ button {
   transform: scale(0.97);
 }
 
+.btn--outline-gold {
+  background: transparent;
+  color: var(--color-gold);
+  border: 1px solid rgba(212, 175, 113, 0.4);
+  backdrop-filter: blur(4px);
+}
+
+.btn--outline-gold:hover,
+.btn--outline-gold:focus-visible {
+  background: rgba(212, 175, 113, 0.12);
+  border-color: var(--color-gold);
+  color: var(--color-text);
+  box-shadow: 0 8px 24px rgba(212, 175, 113, 0.2);
+}
+
+.btn--outline-gold:active {
+  transform: translateY(0) scale(0.97);
+}
+
 /* ─── SECTION SHARED ─────────────────────────────────── */
 .section {
   padding-block: var(--section-py);
@@ -1523,7 +1542,7 @@ a.contact__detail-value:hover { color: var(--color-gold); }
   .about__inner,
   .contact__inner { grid-template-columns: 1fr; gap: 3rem; }
 
-  .about__image-frame { aspect-ratio: 4/3; max-width: 500px; }
+  .about__image-frame { max-width: 500px; margin: 0 auto; }
 
   .differentials__grid { grid-template-columns: repeat(2, 1fr); }
 
