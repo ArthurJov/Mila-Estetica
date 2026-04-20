@@ -494,7 +494,7 @@ button {
 /* ─── HERO ───────────────────────────────────────────── */
 .hero {
   position: relative;
-  min-height: 100svh;
+  height: 100vh;
   display: flex;
   align-items: center;
   overflow: hidden;
@@ -503,7 +503,7 @@ button {
 .hero__bg {
   position: absolute;
   inset: 0;
-  background-image: url('../assets/images/hero-bg.png');
+  background-image: url('../assets/images/hero-bg-homecare.png');
   background-size: cover;
   background-position: center;
   transform: scale(1.05);
@@ -519,19 +519,19 @@ button {
 .hero__overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to right,
-    rgba(8, 6, 3, 0.72) 0%,
-    rgba(10, 8, 5, 0.45) 55%,
-    rgba(10, 8, 5, 0.15) 100%
-  );
+  background: radial-gradient(circle at center, rgba(14, 11, 8, 0.4) 0%, rgba(10, 8, 5, 0.75) 100%);
 }
 
 .hero__content {
   position: relative;
   z-index: 2;
-  padding-top: 7rem;
-  padding-bottom: 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-top: 80px;
+  padding-bottom: 2rem;
+  width: 100%;
 }
 
 .hero__eyebrow {
@@ -545,11 +545,11 @@ button {
 
 .hero__title {
   font-family: var(--font-serif);
-  font-size: clamp(3rem, 7vw, 6rem);
+  font-size: clamp(2.5rem, 6vw, 5rem);
   font-weight: 300;
-  line-height: 1.05;
+  line-height: 1.1;
   color: var(--color-text);
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem;
 }
 
 .hero__title em {
@@ -559,24 +559,26 @@ button {
 }
 
 .hero__subtitle {
-  font-size: clamp(1rem, 2vw, 1.15rem);
+  font-size: clamp(0.95rem, 1.5vw, 1.15rem);
   color: var(--color-text-dim);
-  line-height: 1.75;
-  max-width: 520px;
-  margin-bottom: 2.5rem;
+  line-height: 1.6;
+  max-width: 580px;
+  margin-bottom: 2rem;
 }
 
 .hero__actions {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 1rem;
-  margin-bottom: 3.5rem;
+  margin-bottom: 2.5rem;
 }
 
 .hero__stats {
   display: flex;
   align-items: center;
-  gap: 2rem;
+  justify-content: center;
+  gap: 2.5rem;
   flex-wrap: wrap;
 }
 

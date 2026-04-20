@@ -12,7 +12,7 @@ const cfg = {
   // Instagram (sem o @)
   instagram: 'luudmilapaixao',
   // Mensagem padrão enviada pelo WhatsApp
-  whatsappDefaultMsg: 'Olá, Ludmila! Vim pelo seu site e gostaria de agendar um atendimento'
+  whatsappDefaultMsg: 'Olá, Ludmila! Vim pelo seu site e gostaria de tirar algumas dúvidas'
 };
 
 const WA_BASE = cfg.whatsappNumber
@@ -342,19 +342,16 @@ contactForm?.addEventListener('submit', e => {
   e.preventDefault();
 
   const name    = document.getElementById('form-name').value.trim();
-  const phone   = document.getElementById('form-phone').value.trim();
   const service = document.getElementById('form-service').value;
   const message = document.getElementById('form-message').value.trim();
 
-  if (!name || !phone || !service) {
-    alert('Por favor, preencha seu nome, telefone e serviço de interesse.');
+  if (!name || !service) {
+    alert('Por favor, preencha seu nome e serviço de interesse.');
     return;
   }
 
-  let text = `Olá, Ludmila! Me chamo *${name}* e tenho interesse no serviço de *${service}*.`;
-  if (phone) text += ` Meu contato é ${phone}.`;
-  if (message) text += ` Mensagem: ${message}`;
-  text += ` Vi seu site e gostaria de agendar um atendimento.`;
+  let text = `Olá, Ludmila! 😊\n\nMe chamo *${name}* e tenho interesse em *${service}*.`;
+  if (message) text += `\n\n${message}`;
 
   const cleanPhone = cfg.whatsappNumber ? cfg.whatsappNumber.replace(/\D/g, '') : '';
   const url = `https://api.whatsapp.com/send?phone=${cleanPhone}&text=${encodeURIComponent(text)}`;
@@ -384,4 +381,12 @@ const yearEls = document.querySelectorAll('.footer__copy');
 const currentYear = new Date().getFullYear();
 yearEls.forEach(el => {
   el.innerHTML = el.innerHTML.replace(/\d{4}/, currentYear);
+});
+
+/* ─── EXPERIÊNCIA AUTOMÁTICA (ANOS) ─────────────────── */
+const expEls = document.querySelectorAll('.dynamic-exp-years');
+expEls.forEach(el => {
+  const startYear = parseInt(el.getAttribute('data-start-year') || '2023', 10);
+  const diff = currentYear - startYear;
+  if (diff > 0) el.textContent = `${diff}+`;
 });
