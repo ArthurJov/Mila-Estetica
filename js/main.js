@@ -10,7 +10,7 @@ const cfg = {
   // Número do WhatsApp (apenas dígitos, com DDI)
   whatsappNumber: '5571982080832',
   // Instagram (sem o @)
-  instagram: 'luudmilapaixao',
+  instagram: 'ludmilapaixao',
   // Mensagem padrão enviada pelo WhatsApp
   whatsappDefaultMsg: 'Olá, Ludmila! Vim pelo seu site e gostaria de tirar algumas dúvidas'
 };
