@@ -350,11 +350,11 @@ contactForm?.addEventListener('submit', e => {
     return;
   }
 
-  let text = `Olá, Ludmila! 😊\n\nMe chamo *${name}* e tenho interesse em *${service}*.`;
-  if (message) text += `\n\n${message}`;
+  let text = `Olá, Ludmila! 😊%0A%0AMe chamo *${name}* e tenho interesse em *${service}*.`;
+  if (message) text += `%0A%0A${message}`;
 
   const cleanPhone = cfg.whatsappNumber ? cfg.whatsappNumber.replace(/\D/g, '') : '';
-  const url = `https://api.whatsapp.com/send?phone=${cleanPhone}&text=${encodeURIComponent(text)}`;
+  const url = `https://api.whatsapp.com/send?phone=${cleanPhone}&text=${text}`;
   window.open(url, '_blank', 'noopener');
 });
 
@@ -410,8 +410,32 @@ class HeroSequence {
     this.virtualFrame = 0;
     this.lastTime = 0;
     this.isPlaying = false;
+    this.isVisible = true;
+    this.animationId = null;
+    
+    this.initObserver();
     
     this.init();
+  }
+
+  initObserver() {
+    const heroSection = document.getElementById('hero');
+    if (!heroSection) return;
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        this.isVisible = entry.isIntersecting;
+        if (this.isVisible && this.isPlaying) {
+          this.lastTime = performance.now();
+          this.animate();
+        } else if (!this.isVisible && this.animationId) {
+          cancelAnimationFrame(this.animationId);
+          this.animationId = null;
+        }
+      });
+    }, { threshold: 0 });
+    
+    observer.observe(heroSection);
   }
 
   init() {
@@ -439,10 +463,10 @@ class HeroSequence {
   }
 
   animate(time) {
-    if (!this.isPlaying) return;
+    if (!this.isPlaying || !this.isVisible) return;
     
     // Request animation frame immediately runs at monitor's native refresh rate (e.g., 60fps or 120fps)
-    requestAnimationFrame((t) => this.animate(t));
+    this.animationId = requestAnimationFrame((t) => this.animate(t));
     
     if (!time) time = performance.now();
     const elapsed = time - this.lastTime;

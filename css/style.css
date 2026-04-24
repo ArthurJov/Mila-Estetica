@@ -230,9 +230,9 @@ button {
 .section__title {
   font-family: var(--font-serif);
   font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 300;
+  font-weight: 400;
   color: var(--color-text);
-  line-height: 1.15;
+  line-height: 1.25;
   margin-bottom: 1rem;
 }
 
@@ -299,6 +299,7 @@ button {
   pointer-events: none;
   opacity: 0.25;
   animation: floatDrift 18s ease-in-out infinite alternate;
+  will-change: transform;
 }
 
 .floating-element--1 {
@@ -582,8 +583,8 @@ button {
 .hero__title {
   font-family: var(--font-serif);
   font-size: clamp(2.5rem, 6vw, 5rem);
-  font-weight: 300;
-  line-height: 1.1;
+  font-weight: 400;
+  line-height: 1.2;
   color: var(--color-text);
   margin-bottom: 1.25rem;
 }
@@ -1481,9 +1482,9 @@ a.contact__detail-value:hover { color: var(--color-gold); }
 /* ─── WHATSAPP FLUTUANTE ─────────────────────────────── */
 .whatsapp-float {
   position: fixed;
-  bottom: 1.75rem;
+  bottom: max(2rem, env(safe-area-inset-bottom));
   right: 1.75rem;
-  z-index: 900;
+  z-index: 2000;
   width: 58px;
   height: 58px;
   border-radius: var(--radius-full);
@@ -1638,7 +1639,7 @@ a.contact__detail-value:hover { color: var(--color-gold); }
     cursor: pointer;
     transition: color 0.2s ease, transform 0.2s ease;
     padding: 0.5rem;
-    font-weight: 300;
+    font-weight: 400;
   }
   
   .nav__close:hover, 
@@ -1676,7 +1677,7 @@ a.contact__detail-value:hover { color: var(--color-gold); }
   .nav__link {
     font-family: var(--font-serif);
     font-size: 2.2rem; /* Um pouco maior no mobile para dar mais peso */
-    font-weight: 300;
+    font-weight: 400;
     letter-spacing: 0.04em;
     padding: 0.9rem 2rem;
     display: block;
