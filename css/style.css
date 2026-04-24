@@ -1710,7 +1710,10 @@ a.contact__detail-value:hover { color: var(--color-gold); }
   /* Gallery */
   .gallery__grid {
     grid-template-columns: repeat(2, 1fr);
-    grid-auto-rows: 180px;
+    grid-auto-rows: auto;
+  }
+  .gallery__item {
+    aspect-ratio: 1 / 1;
   }
   .gallery__item--wide { grid-column: span 1; }
   .gallery__item--tall { grid-row: span 1; }
