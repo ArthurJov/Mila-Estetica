@@ -1,6 +1,6 @@
 # 💆‍♀️ Site Profissional de Estética
 
-Este projeto é um site institucional desenvolvido para uma esteticista profissional, com foco em apresentar serviços, fortalecer presença digital e facilitar o contato com clientes.
+Este projeto é um site desenvolvido para uma esteticista profissional, com foco em apresentar serviços, fortalecer presença digital e facilitar o contato com clientes.
 
 🔗 **Acesse o site:**  
 👉 [ludmilapaixao.unaux.com](https://ludmilapaixao.unaux.com/)
